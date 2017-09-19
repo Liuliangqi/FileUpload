@@ -1,0 +1,57 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+	<div th:if="${message}">
+		<h2 th:text="${message}"/>
+	</div>
+
+	<div>
+		<form method="POST" enctype="multipart/form-data" action="/api/upload">
+			<table>
+				<tr>
+					<td>File to upload:</td>
+					<td><input type="file" name="file" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="Upload" /></td>
+				</tr>
+			</table>
+		</form>
+
+		<div>
+			<h2>File Uploaded:</h2>
+			<ul>
+				<li th:each="file : ${files}">
+					<h3 th:text="${file}" />
+				</li>
+			</ul>
+		</div>
+
+		<form method="GET" action="/api/get">
+			<table>
+				<tr>
+					<td>File Full Name:</td>
+					<td><input type="text" name="fileName" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="CheckFileInfo" /></td>
+				</tr>
+			</table>
+		</form>
+
+		<div>
+			<h2>File Info:</h2>
+			<ul>
+				<li th:each="fileInfo : ${fileInformation}">
+					<h3 th:text="${fileInfo}" />
+				</li>
+			</ul>
+		</div>
+	</div>
+
+
+
+</body>
+</html>
